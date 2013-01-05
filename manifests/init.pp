@@ -30,6 +30,7 @@ class virtualbox(
 ) {
 
   include virtualbox::params
+  include virtualbox::extension
 
   $package_real = $package ? {
     'UNSET' => $::virtualbox::params::package,
@@ -100,5 +101,6 @@ class virtualbox(
   package { $package_real:
     ensure  => $version_real,
     require => Class['virtualbox::repo'],
+    notify  => Exec['install extension']
   }
 }
