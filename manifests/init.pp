@@ -98,9 +98,10 @@ class virtualbox(
     enabled    => $repo_enabled_real,
   }
 
+  Apt::Source<||> ->
+
   package { $package_real:
     ensure  => $version_real,
-    require => Class['virtualbox::repo'],
     notify  => Exec['install extension']
   }
 }
