@@ -37,6 +37,8 @@ class virtualbox(
     default => $package,
   }
 
+  include virtualbox::manage
+
   $version_real = $version ? {
     'UNSET' => $::virtualbox::params::version,
     default => $version,
