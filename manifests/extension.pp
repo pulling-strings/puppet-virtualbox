@@ -6,10 +6,10 @@ class virtualbox::extension {
   $url = "http://download.virtualbox.org/virtualbox/${version}/${tar}"
 
   exec{'install extension':
-    command     => "wget ${url} -P /tmp && vboxmanage extpack install /tmp/${tar}",
-    user        => 'root',
-    path        => ['/usr/bin','/bin',],
-    refreshonly => true
+    command => "wget ${url} -P /tmp && vboxmanage extpack install /tmp/${tar}",
+    user    => 'root',
+    path    => ['/usr/bin','/bin'],
+    onlyif => "/usr/bin/VBoxManage list extpacks | grep ${version}"
   }
 
 }
