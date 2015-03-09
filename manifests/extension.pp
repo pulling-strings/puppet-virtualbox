@@ -1,7 +1,7 @@
 # Setting up the extension module
 class virtualbox::extension {
 
-  $version = '4.3.16'
+  $version = '4.3.24'
   $tar = "Oracle_VM_VirtualBox_Extension_Pack-${version}.vbox-extpack"
   $url = "http://download.virtualbox.org/virtualbox/${version}/${tar}"
 
