@@ -67,7 +67,7 @@ class virtualbox::params {
 
   $dist_package = $::osfamily ? {
     'RedHat' => 'VirtualBox-4.3',
-    'Debian' => 'virtualbox',
+    'Debian' => 'virtualbox-4.3',
     default  => fail("${::osfamily} is not supported by ${module_name}")
   }
 
