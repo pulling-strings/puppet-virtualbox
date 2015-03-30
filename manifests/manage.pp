@@ -30,4 +30,13 @@ class virtualbox::manage(
     }
 
   }
+
+  exec{"adding ${user} to vboxusers group":
+    command => "sudo usermod -aG vboxusers ${user}",
+    user    => 'root',
+    path    => ['/usr/bin','/bin'],
+    unless  => "grep -q 'vboxuser.*${user}' /etc/group",
+    require => Package[$virtualbox::package_real]
+  }
+
 }
