@@ -1,9 +1,10 @@
 # Setting up the extension module
 class virtualbox::extension(
-  $version = '4.3.26'
+  $version = '5.0.0',
+  $revision= '101573'
 ){
 
-  $tar = "Oracle_VM_VirtualBox_Extension_Pack-${version}.vbox-extpack"
+  $tar = "Oracle_VM_VirtualBox_Extension_Pack-${version}-${revision}.vbox-extpack"
   $url = "http://download.virtualbox.org/virtualbox/${version}/${tar}"
 
   exec{'install extension':
