@@ -16,17 +16,17 @@ class virtualbox::manage(
       command => "vboxmanage setproperty machinefolder ${machinefolder}",
       user    => $user,
       path    => ['/usr/bin','/bin',],
-      require => Package[$virtualbox::package_real]
+      require => Package[$::virtualbox::package_real]
     }
   }
 
-  if($hostkey_comb != '' and $desktop::is_desktop){
+  if($hostkey_comb != '' and $::desktop::is_desktop){
     $key = $keys[$hostkey_comb]
     exec{"set hostkey_comb to ${$hostkey_comb}":
       command => "vboxmanage setextradata global GUI/Input/HostKeyCombination ${key}",
       user    => $user,
       path    => ['/usr/bin','/bin',],
-      require => Package[$virtualbox::package_real]
+      require => Package[$::virtualbox::package_real]
     }
 
   }
@@ -36,7 +36,7 @@ class virtualbox::manage(
     user    => 'root',
     path    => ['/usr/bin','/bin'],
     unless  => "grep -q 'vboxuser.*${user}' /etc/group",
-    require => Package[$virtualbox::package_real]
+    require => Package[$::virtualbox::package_real]
   }
 
 }
