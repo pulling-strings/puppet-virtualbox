@@ -25,7 +25,7 @@ class virtualbox::params {
   }
 
   $repo_key = $::virtualbox_repo_key ? {
-    undef   => '98AB5139',
+    undef   => '7B0FAB3A13B907435925D9C954422A4B98AB5139',
     default => $::virtualbox_repo_key
   }
 
