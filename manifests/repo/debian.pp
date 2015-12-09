@@ -18,12 +18,14 @@ class virtualbox::repo::debian (
   $pin
 ) {
   apt::source { $repo_name:
-    location    => $baseurl,
-    release     => $release,
-    repos       => $repos,
-    key         => $key,
-    key_source  => $key_source,
-    pin         => $pin,
-    include_src => false
+    location   => $baseurl,
+    release    => $release,
+    repos      => $repos,
+    key       => {
+      id     => $key,
+      source => $key_source
+    },
+    pin        => $pin,
+    include    => {src => false }
   }
 }
