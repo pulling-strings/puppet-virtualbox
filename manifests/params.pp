@@ -25,13 +25,13 @@ class virtualbox::params {
   }
 
   $repo_key = $::virtualbox_repo_key ? {
-    undef   => '7B0FAB3A13B907435925D9C954422A4B98AB5139',
+    undef   => 'B9F8D658297AF3EFC18D5CDFA2F683C52980AECF',
     default => $::virtualbox_repo_key
   }
 
   $repo_key_source = $::virtualbox_repo_key_source ? {
     undef   => $::osfamily ? {
-      /(RedHat|Debian)/ => 'http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc',
+      /(RedHat|Debian)/ => 'https://www.virtualbox.org/download/oracle_vbox_2016.asc',
       default           => fail("${::osfamily} is not supported by ${module_name}")
     },
     default => $::virtualbox_repo_key_source
