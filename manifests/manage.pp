@@ -2,10 +2,13 @@
 #  $hostkey_comb possible values (only on Linux see http://bit.ly/1wxVco2):
 #    left_alt, right_alt, right_cont, left_cont
 class virtualbox::manage(
-  $machinefolder = '',
-  $user = '',
+  $machinefolder = false,
+  $user = false,
   $hostkey_comb = ''
 ){
+
+  validate_string($user, $machinefolder)
+
   $keys = {
     left_alt   => '65513', right_alt => '65514',
     right_ctrl => '65508', left_ctrl => '65507'
