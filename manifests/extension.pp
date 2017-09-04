@@ -1,7 +1,7 @@
 # Setting up the extension module
 class virtualbox::extension(
-  $version = '5.1.22',
-  $revision= '115126'
+  $version = '5.1.26',
+  $revision= '117224'
 ){
 
   $tar = "Oracle_VM_VirtualBox_Extension_Pack-${version}-${revision}.vbox-extpack"
@@ -11,7 +11,8 @@ class virtualbox::extension(
     command => "wget ${url} -P /tmp ",
     user    => 'root',
     path    => ['/usr/bin','/bin'],
-    unless  => "test -f ${tar}"
+    unless  => "test -f ${tar}",
+    timeout => 600
   } ->
 
   exec{'install extension':
